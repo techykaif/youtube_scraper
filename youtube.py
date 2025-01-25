@@ -9,6 +9,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from urllib.parse import urlparse
 import re
+import os
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 # Sanitize filename (remove special characters)
@@ -81,9 +83,10 @@ def get_youtube_channel_data(driver, url):
     # Save data to JSON file with a sanitized name
     try:
         sanitized_name = sanitize_filename(name)
-        with open(f'{sanitized_name}.json', "w") as file:
+        file_path = os.path.join(os.getcwd(), f"{sanitized_name}.json")
+        with open(file_path, "w") as file:
             json.dump(data, file, indent=4)
-        logging.info(f'Channel data saved to {sanitized_name}.json')
+        logging.info(f'Channel data saved to {file_path}')
     except Exception as e:
         logging.error(f"Error saving data to JSON: {e}")
 
