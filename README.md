@@ -20,6 +20,7 @@ If you don't have the script locally, you can clone or download the repository.
 
 ```bash
 git clone https://github.com/techykaif/youtube_scraper
+cd youtube_scraper
 ```
 
 ### 2. Install Python dependencies:
